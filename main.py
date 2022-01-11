@@ -9,6 +9,9 @@ import random
 import re
 import youtube_dl
 
+#Should have bot
+
+
 #client = discord.Client()
 #invite link = https://discord.com/api/oauth2/authorize?client_id=903011442452729877&permissions=543350587216&scope=bot
 bot_client = commands.Bot(command_prefix = '.')
