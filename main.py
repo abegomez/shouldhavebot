@@ -5,12 +5,13 @@ from discord.utils import get
 from discord import FFmpegPCMAudio
 from youtube_dl import YoutubeDL
 import os
+from dotenv import load_dotenv
 import random
 import re
 import youtube_dl
 
 #Should have bot
-
+load_dotenv()
 
 #client = discord.Client()
 #invite link = https://discord.com/api/oauth2/authorize?client_id=903011442452729877&permissions=543350587216&scope=bot
@@ -302,5 +303,6 @@ async def clear(ctx):
 #                 return
 #     else:
 #         return
-    
-bot_client.run('OTAzMDExNDQyNDUyNzI5ODc3.YXmw8Q.E13TcCwaNXxbAmqbgR6LwXHv-G4')
+token = os.getenv('TOKEN')
+
+bot_client.run(token)
