@@ -107,17 +107,17 @@ async def playSong(ctx, channel):
         try :
             channel.play(
                 player,
-                after= lambda e: asyncio.run_coroutine_threadsafe(playSong(ctx, channel),loop=bot_client.loop)
+                after= lambda e: after_song(ctx, channel)
             )
         except discord.errors.ClientException:
             print("error client")
 
-    await ctx.send('**Now playing:** {}'.format(player.title))
+        await ctx.send('**Now playing:** {}'.format(player.title))
 
-def after_song(ctx, channel,error):
+def after_song(ctx, channel,error=None):
     print("popping")
-    queue[channel.guild.id].pop() 
-    asyncio.run_coroutine_threadsafe(playSong(ctx,channel), bot_client.loop)
+    if len(queue[channel.guild.id]) > 0:
+        asyncio.run_coroutine_threadsafe(playSong(ctx,channel), bot_client.loop)
 
 @bot_client.event
 async def on_ready():
